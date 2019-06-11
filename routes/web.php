@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'GuestPagesController@index')->name('index');
+Route::get('/ranking', 'GuestPagesController@ranking')->name('ranking');
+Route::get('/pilotentry', 'GuestPagesController@pilotEntry')->name('pilotEntry');
+Route::get('/evententry', 'GuestPagesController@eventEntry')->name('eventEntry');
+Route::get('/events', 'GuestPagesController@eventDisplay')->name('eventDisplay');
+Route::get('/classentry', 'GuestPagesController@classEntry')->name('classEntry');

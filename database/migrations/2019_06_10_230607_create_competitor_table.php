@@ -14,8 +14,10 @@ class CreateCompetitorTable extends Migration
     public function up()
     {
         Schema::create('competitor', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->integer('competitorId');
+            $table->string('name');
+            $table->string('email');
+            $table->string('username');
         });
     }
 
