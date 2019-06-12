@@ -17,3 +17,7 @@ Route::get('/pilotentry', 'GuestPagesController@pilotEntry')->name('pilotEntry')
 Route::get('/evententry', 'GuestPagesController@eventEntry')->name('eventEntry');
 Route::get('/events', 'GuestPagesController@eventDisplay')->name('eventDisplay');
 Route::get('/classentry', 'GuestPagesController@classEntry')->name('classEntry');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
