@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ClassEntry;
 
 class ClassEntryController extends Controller
 {
@@ -13,7 +14,9 @@ class ClassEntryController extends Controller
      */
     public function index()
     {
-        //
+        $classentrys = ClassEntry::latest()->paginate(5);
+        return view('links.classEntry', compact('classentrys'))
+        ->with('i', (request()->input('page',1) -1)*5);
     }
 
     /**

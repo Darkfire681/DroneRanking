@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\EventDisplay;
 
 class EventDisplayController extends Controller
 {
@@ -11,10 +12,12 @@ class EventDisplayController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+     public function index()
+     {
+         $eventdisplays = EventDisplay::latest()->paginate(5);
+         return view('links.eventDisplay', compact('eventdisplays'))
+         ->with('i', (request()->input('page',1) -1)*5);
+     }
 
     /**
      * Show the form for creating a new resource.

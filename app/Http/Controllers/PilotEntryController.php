@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\PilotEntry;
 
 class PilotEntryController extends Controller
 {
@@ -11,10 +12,12 @@ class PilotEntryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+     public function index()
+     {
+         $pilotentrys = PilotEntry::latest()->paginate(5);
+         return view('links.PilotEntry', compact('pilotentrys'))
+         ->with('i', (request()->input('page',1) -1)*5);
+     }
 
     /**
      * Show the form for creating a new resource.

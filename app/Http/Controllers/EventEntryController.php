@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\EventEntry;
 
 class EventEntryController extends Controller
 {
@@ -11,10 +12,12 @@ class EventEntryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+     public function index()
+     {
+         $evententrys = EventEntry::latest()->paginate(5);
+         return view('links.eventEntry', compact('evententrys'))
+         ->with('i', (request()->input('page',1) -1)*5);
+     }
 
     /**
      * Show the form for creating a new resource.

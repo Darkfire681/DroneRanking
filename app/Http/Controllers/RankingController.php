@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Ranking;
 
 class RankingController extends Controller
 {
@@ -11,10 +12,12 @@ class RankingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+     public function index()
+     {
+         $rankings = Ranking::latest()->paginate(5);
+         return view('links.ranking', compact('rankings'))
+         ->with('i', (request()->input('page',1) -1)*5);
+     }
 
     /**
      * Show the form for creating a new resource.

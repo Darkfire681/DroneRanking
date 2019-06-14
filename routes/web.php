@@ -21,3 +21,9 @@ Route::get('/classentry', 'GuestPagesController@classEntry')->name('classEntry')
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('classentry', 'ClassEntryController');
+Route::resource('eventdisplay', 'EventDisplayController');
+Route::resource('evententry', 'EventEntryController');
+Route::resource('pilotentry', 'PilotEntryController');
+Route::resource('ranking', 'RankingController');
